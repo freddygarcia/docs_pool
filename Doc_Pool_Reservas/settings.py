@@ -25,7 +25,7 @@ SECRET_KEY = 'w9ukd39pfjqlpa(7d7ltawj%st9wcq24m-8^52+b=^6g4-(wyp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.24.3.66', 'localhost']
 
 
 # Application definition
@@ -39,11 +39,16 @@ DEFAULT_APPS = [
     'django.contrib.staticfiles',
 ]
 
+THIRD_PARTY_APPS = [
+    'django_select2',
+    'rest_framework',
+]
+
 MY_APPS = [
     'doc_registration'
 ]
 
-INSTALLED_APPS = MY_APPS + DEFAULT_APPS
+INSTALLED_APPS = MY_APPS + DEFAULT_APPS +  THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
