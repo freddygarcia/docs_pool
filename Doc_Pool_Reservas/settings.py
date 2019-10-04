@@ -135,3 +135,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# elements to show in the home page
+PAGE_LIMIT = 3
+
+# amount of items to display in the pagination section
+PAGINATOR_ITEM_NUMBER = 4

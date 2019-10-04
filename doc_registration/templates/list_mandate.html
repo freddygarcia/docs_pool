@@ -1,0 +1,75 @@
+{% load filters %}
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+
+            {% if filters %}
+                {% for mandate in mandates %}
+                <div class="card">
+                    <div class="card-header text-right">
+                        Actualizado al <span class="font-italic">{{mandate.document.update_date}}</span>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5 class="card-title">{{mandate.document}}</h5>
+                                <pre class="card-text">{{mandate.display_content}}</pre>
+                                <a href="{% url 'mandate' mandate.id %}" class="btn btn-primary">Ver más</a>
+                            </div>
+
+                            <div class="col-md-3" style="border-left: 1px dashed #d4d4d4">
+                                <ul class="list-group list-group-flush">
+                                    {% for area in mandate.areas_list %}
+                                    <li class="list-group-item">{{area}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-3">
+                {% empty %}
+                <div class="card  bg-warning">
+                    <div class="card-body">
+                        La búsqueda no arrojó resultados
+                    </div>
+                </div>
+                {% endfor %}
+                    {% if mandates.paginator.num_pages > 2 %}
+                        <div class="col-md-12">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    {% if mandates.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous" data-page='1'>
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    {% for page in mandates.paginator.page_range %}
+                                        {% if mandates.number|show_pagination_numer:forloop.counter %}
+                                            {% if mandates.number == forloop.counter %}
+                                                <li class="page-item active"><a class="page-link" href="#" data-page='{{page}}'>{{page}}</a></li>
+                                            {% else %}
+                                                <li class="page-item"><a class="page-link" href="#" data-page='{{page}}'>{{page}}</a></li>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if mandates.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next"  data-page='{{mandates.paginator.num_pages}}'>
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    {% endif %}
+
+            {% endif %}
+        </div>
+    </div>
+</div>

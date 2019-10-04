@@ -31,7 +31,7 @@ class AreaAdmin(admin.ModelAdmin):
 
 class MandateAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'source__name')
-    autocomplete_fields = ('category', 'area', 'document')
+    autocomplete_fields = ('category', 'document')
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows':25, 'cols':170})},
     }

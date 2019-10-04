@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block styles %}
+<style type="text/css">
+	pre	{
+		font-size: 12pt;
+	}
+</style>
+{% endblock styles %}
+
+
+{% block body %}
+
+
+	<div class="py-5 text-center">
+		<h2>Repositorio de Documentos</h2>
+		<p class="lead">Esto va a buscar muchos documentos</p>
+	</div>
+	  
+
+	<div class="card">
+		<h5 class="card-header">{{mandate.document.title}}</h5>
+	    <div class="card-body">
+	        <h5 class="card-title"></h5>
+	        <pre class="card-text">{{mandate.content}}</pre>
+	    	<a class="btn btn-primary float-right" href="#" onclick="window.history.back();" >Volver</a>
+	    </div>
+	</div>
+
+
+{% endblock body %}

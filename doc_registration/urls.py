@@ -23,7 +23,6 @@ from .api import routes
 urlpatterns = [
     path('api/', include(routes.router.urls)),
 	path('', views.index, name='index'),
-	path('home', views.home, name='home')
+	path('home', views.home, name='home'),
+    path('mandate/<int:mandate_id>', views.mandate, name='mandate')
 ]
-
-
