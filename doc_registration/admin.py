@@ -8,9 +8,8 @@ from doc_registration.models import Area, Source, Category, Document, DocumentDe
 class DocumentDetailsInline(admin.TabularInline):
 
     model = DocumentDetails
-    readonly_fields=('last_update',)
-    fields = ('file_name', 'last_update', 'link')
-    ordering = ('last_update',)
+    fields = ('file_name', 'document_date', 'link')
+    ordering = ('document_date',)
 
 class DocumentAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'source__name')

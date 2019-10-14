@@ -52,6 +52,7 @@ class DocumentDetails(models.Model):
     document = models.ForeignKey('Document', on_delete=models.PROTECT)
     file_name = models.CharField(max_length=300, verbose_name='Nombre')
     last_update = models.DateTimeField(auto_now=True)
+    document_date = models.DateField(null=True, verbose_name='Fecha Documento')
 
     def __str__(self):
         return str(self.document)
@@ -66,10 +67,23 @@ class Mandate(models.Model):
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name='Categoría')
     areas = models.ManyToManyField(Area)
 
+    MANDATE_TYPE_CHOICES = [
+        ('MUST', 'Debe'),
+        ('MUST_NOT', 'No debe'),
+    ]
+
+    _type = models.CharField(
+        max_length=10,
+        db_column='m_type',
+        choices=MANDATE_TYPE_CHOICES,
+        verbose_name='Tipo',
+        default='MUST',
+    )
+
     @property
     def display_content(self):
         areas_len = len(self.areas.all())
-        option = {6: 1100, 1 : 200, 2: 200, 3: 300, 4: 600, 5: 900 }
+        option = {0: 100, 1 : 200, 2: 200, 3: 300, 4: 600, 5: 900, 6: 1100}
         text_limit = option[areas_len]
         return self.content[:text_limit] + '...'
 
@@ -87,6 +101,9 @@ class Mandate(models.Model):
 
         if filters.get('area'):
             query = query.filter(areas__id=filters.get('area'))
+
+        if filters.get('document'):
+            query = query.filter(document__id=filters.get('document'))
 
         if filters.get('source'):
             query = query.filter(document__source_id=filters.get('source'))

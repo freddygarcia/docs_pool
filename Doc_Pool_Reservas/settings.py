@@ -90,9 +90,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'doc_pool_resevas',
-        'USER': 'doc_pool_resevas',
-        'PASSWORD': 'doc_pool_resevas',
-        'HOST': 's460-aud06',
+        'USER': 'fgabreu',
+        'PASSWORD': 'toor',
+        'HOST': 's460-aud04',
         'PORT': '3306',
     }
 }
