@@ -4,27 +4,39 @@
     <div class="row">
         <div class="col-md-12">
 
-            {% if filters %}
+            {% if f_filters %}
                 {% for mandate in mandates %}
                 <div class="card">
                     <div class="card-header text-right">
-                        Actualizado al <span class="font-italic">{{mandate.document.update_date}}</span>
+                        Actualizado al <span class="font-italic">{{mandate.document.recent_details.last_update}}</span>
                     </div>
                     <div class="card-body">
 
                         <div class="row">
                             <div class="col-md-9">
-                                <h5 class="card-title">{{mandate.document}}</h5>
+                                <h5 class="card-title">{{mandate.document}}
+
+                                    {% if mandate.document.recent_details.link %}
+                                        <a href="{{mandate.document.recent_details.link}}" target="_blank"   class="badge badge-info float-right">ver documento </a>
+                                    {% else %}
+                                        <a href="javascript:void(0)" class="badge badge-secondary float-right" data-toggle="tooltip" data-placement="top" title="No hay referencia al documento">ver documento </a>
+                                    {% endif %}
+
+                                </h5>
                                 <pre class="card-text">{{mandate.display_content}}</pre>
                                 <a href="{% url 'mandate' mandate.id %}" class="btn btn-primary">Ver más</a>
                             </div>
 
-                            <div class="col-md-3" style="border-left: 1px dashed #d4d4d4">
-                                <ul class="list-group list-group-flush">
-                                    {% for area in mandate.areas_list %}
-                                    <li class="list-group-item">{{area}}</li>
-                                    {% endfor %}
-                                </ul>
+                            <div class="list-group col-md-3">
+                              <a href="#" class="list-group-item list-group-item-action disabled ">Areas</a>
+
+                              {% for area in mandate.areas_list %}
+                                 {% if f_filters|compare_area:area %}
+                                     <a href="javascript:void(0)" class="list-group-item list-group-item-action area_filter active" data-area='{{area.id}}'>{{area}}</a>
+                                 {% else %}
+                                     <a href="javascript:void(0)" class="list-group-item list-group-item-action area_filter list-group-item-light" data-area='{{area.id}}'>{{area}}</a>
+                                 {% endif %} 
+                              {% endfor %}
                             </div>
                         </div>
                     </div>

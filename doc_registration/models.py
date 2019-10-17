@@ -37,8 +37,8 @@ class Document(models.Model):
     source = models.ForeignKey('Source', on_delete=models.PROTECT, verbose_name='Origen')
 
     @property
-    def update_date(self):
-        return self.documentdetails_set.latest('last_update').last_update
+    def recent_details(self):
+        return self.documentdetails_set.latest('last_update')
 
     class Meta:
         verbose_name  = "documento"

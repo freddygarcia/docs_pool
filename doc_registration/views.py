@@ -21,10 +21,10 @@ def home(request):
         mandates = paginator.get_page(page)
 
         json = filters.dict()
-        context = { 'mandates' : mandates, 'filters' : dumps(json) }
+        context = { 'mandates' : mandates, 'f_filters' : json }
         return render(request, 'list.html', context)
 
-    context = { 'filters' : {} }
+    context = { 'f_filters' : {} }
     return render(request, 'list.html', context)
 
 

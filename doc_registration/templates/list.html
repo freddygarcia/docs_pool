@@ -62,7 +62,7 @@
 
 		function populate_filter(filter_name, display_name) {
 
-			var values = {{ filters | safe }};
+			var values = {{ f_filters | safe }};
 			display_name = display_name || 'name';
 
 
@@ -76,6 +76,14 @@
 					$('#' + filter_name).append('<option ' + selected + ' value="' + item.id + '">' + item[display_name] + '</option>')
 				});
 			});
+		}
+
+		function filterByArea() {
+			$('.area_filter').click(function () {
+				var area_id = $(this).data('area');
+				$('form #area').val(area_id);
+				$('form').submit()
+			})
 		}
 
 		function enable_select2() {
@@ -106,8 +114,14 @@
 			})
 		}
 
+		function enableTooltip() {
+			$('.badge.badge-secondary').tooltip()
+		}
+
 		$(document).ready(onReady);
 		$(document).ready(paginate);
+		$(document).ready(filterByArea);
+		$(document).ready(enableTooltip);
 		$(document).ready(resetForm);
 	</script>
 {% endblock scripts %}

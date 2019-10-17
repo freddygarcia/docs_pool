@@ -138,7 +138,7 @@ STATIC_URL = '/static/'
 
 
 # elements to show in the home page
-PAGE_LIMIT = 3
+PAGE_LIMIT = 10
 
 # amount of items to display in the pagination section
 PAGINATOR_ITEM_NUMBER = 4
