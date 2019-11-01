@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 from django.forms import TextInput, Textarea
 
-from doc_registration.models import Area, Source, Category, Document, DocumentDetails, Mandate
+from apps.doc_registration.models import Area, Source, Category, Document, DocumentDetails, Mandate
 
 
 class DocumentDetailsInline(admin.TabularInline):

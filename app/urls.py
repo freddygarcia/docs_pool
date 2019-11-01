@@ -19,6 +19,6 @@ from . import custom_site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('doc_registration.urls')),
+    path('', include('apps.doc_registration.urls')),
     path('select2/', include('django_select2.urls')),
 ]

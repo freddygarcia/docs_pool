@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from doc_registration.models import Area, Source, Category, Document
+from apps.doc_registration.models import Area, Source, Category, Document
 from rest_framework import routers, viewsets
 from .serializers import *
 

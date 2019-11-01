@@ -2,6 +2,6 @@ from django.apps import AppConfig
 
 
 class DocRegistrationConfig(AppConfig):
-    name = 'doc_registration'
+    name = 'apps.doc_registration'
     verbose_name = "Pool de Documentos"
 

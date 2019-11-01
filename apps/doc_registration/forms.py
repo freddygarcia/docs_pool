@@ -1,7 +1,7 @@
 from django_select2.forms import  ModelSelect2Widget
 
 from django import forms
-from doc_registration.models import Area, Source, Category, Document, DocumentDetails, Mandate
+from apps.doc_registration.models import Area, Source, Category, Document, DocumentDetails, Mandate
 
 
 class SearchForm(forms.Form):

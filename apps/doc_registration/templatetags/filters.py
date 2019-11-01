@@ -1,4 +1,4 @@
-from Doc_Pool_Reservas import settings
+from app import settings
 from django import template
 
 register = template.Library()

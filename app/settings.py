@@ -45,7 +45,7 @@ THIRD_PARTY_APPS = [
 ]
 
 MY_APPS = [
-    'doc_registration'
+    'apps.doc_registration'
 ]
 
 INSTALLED_APPS = MY_APPS + DEFAULT_APPS +  THIRD_PARTY_APPS
@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Doc_Pool_Reservas.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Doc_Pool_Reservas.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database

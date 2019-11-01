@@ -2,9 +2,9 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from json import dumps
 
-from Doc_Pool_Reservas import settings
+from app import settings
 from .forms import SearchForm
-from doc_registration.models import Mandate
+from apps.doc_registration.models import Mandate
 
 
 def index(request):

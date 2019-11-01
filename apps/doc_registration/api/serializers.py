@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from doc_registration.models import Area, Source, Category, Document
+from apps.doc_registration.models import Area, Source, Category, Document
 
 class AreaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
