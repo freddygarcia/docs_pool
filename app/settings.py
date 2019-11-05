@@ -45,7 +45,8 @@ THIRD_PARTY_APPS = [
 ]
 
 MY_APPS = [
-    'apps.doc_registration'
+    'apps.doc_registration',
+    'apps.noticrawler'
 ]
 
 INSTALLED_APPS = MY_APPS + DEFAULT_APPS +  THIRD_PARTY_APPS
@@ -94,7 +95,14 @@ DATABASES = {
         'PASSWORD': 'toor',
         'HOST': 's460-aud04',
         'PORT': '3306',
-    }
+    },
+    'postgres': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'noti_crawler',
+        'USER': 'postgres',
+        'PASSWORD': 'PgAdmin@DAC2019',
+        'HOST': 's460-aud04',
+    },
 }
 
 
