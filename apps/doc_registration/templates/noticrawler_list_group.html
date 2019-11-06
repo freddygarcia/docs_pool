@@ -1,0 +1,25 @@
+<div class="list-group-flush mb-5 ">
+
+    <a href="#" class="list-group-item text-center borderless list-group-item-danger">
+        <span class="font-weight-light text-uppercase ">Esta semana</span>
+    </a>
+    {% for post in this_week_posts %}
+    <a href="{{post.url}}" class="list-group-item list-group-item-action"  target="_blank">
+        <span class="font-weight-light">({{post.readable_creation_date}})</span>
+        {{post.title}}
+    </a>
+    {% endfor %}
+</div>
+ 
+
+<div class="list-group-flush  mt-5">
+    <a href="#" class="list-group-item text-center borderless list-group-item-danger">
+        <span class="font-weight-light text-uppercase">Más antiguo</span>
+    </a>
+    {% for post in older_posts %}
+    <a href="{{post.url}}" class="list-group-item list-group-item-action" target="_blank">
+        <span class="font-weight-light">({{post.readable_creation_date}})</span>
+        {{post.title}}
+    </a>
+    {% endfor %}
+</div>

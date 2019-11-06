@@ -83,9 +83,12 @@ class Mandate(models.Model):
     @property
     def display_content(self):
         areas_len = len(self.areas.all())
-        option = {0: 100, 1 : 200, 2: 200, 3: 300, 4: 600, 5: 900, 6: 1100}
+        option = {0: 100, 1 : 200, 2: 400, 3: 500, 4: 600, 5: 900, 6: 1100}
         text_limit = option[areas_len]
-        return self.content[:text_limit] + '...'
+
+        if len(self.content) > text_limit:
+            return self.content[:text_limit] + '...'
+        return self.content
 
     @property
     def areas_list(self):
@@ -111,7 +114,7 @@ class Mandate(models.Model):
         return query
 
     def __str__(self):
-        LEN = 200
+        LEN = 250
         if len(self.content) > LEN:
             return self.content[:LEN] + '...'
         return self.content

@@ -5,12 +5,16 @@ from json import dumps
 from app import settings
 from .forms import SearchForm
 from apps.doc_registration.models import Mandate
+from apps.noticrawler.models import Post
 
 
 def index(request):
      return redirect('/home')
 
 def home(request):
+    this_week_posts, older_posts = Post.recent_posts()
+    context = { 'f_filters' : {}, 'this_week_posts' : this_week_posts, 'older_posts' : older_posts}
+
     if request.method == 'POST':
         filters = request.POST
         form = SearchForm(filters)
@@ -21,10 +25,9 @@ def home(request):
         mandates = paginator.get_page(page)
 
         json = filters.dict()
-        context = { 'mandates' : mandates, 'f_filters' : json }
+        context = { 'mandates' : mandates, 'f_filters' : json, 'this_week_posts' : this_week_posts, 'older_posts' : older_posts}
         return render(request, 'list.html', context)
 
-    context = { 'f_filters' : {} }
     return render(request, 'list.html', context)
 
 
