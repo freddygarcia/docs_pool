@@ -1,45 +1,52 @@
 <div class="col-sm-12 col-xl-12 ">
     <!-- <h4 class="mb-3">Repositorio de Documentos</h4> -->
-    <form class="needs-validation" novalidate="" method="post">
+    <form class="form needs-validation" novalidate="" method="post">
         {% csrf_token %}
 
         <input type="hidden" id="page" name="page">
         <div class="row">
+
+            <div class="col-md-9 mt-2 mb-4">
+                <label for="state">Documento</label>
+                <select class="custom-select power-select d-block w-100" id="document" name='document' tabindex="1">
+                    <option value="">Todo</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 mt-2 mb-4">
+                <label for="state">Palabra clave</label>
+                <input class="form-control" type="text" id="keyword" name='keyword' autocomplete="off" tabindex="2">
+            </div>
+
             <div class="col-md-4 mb-1">
                 <label for="state">Area</label>
-                <select class="custom-select power-select d-block w-100" id="area" name='area'>
+                <select class="custom-select power-select d-block w-100" id="area" name='area' tabindex="3">
                     <option value="">Todo</option>
                 </select>
             </div>
 
             <div class="col-md-4 mb-1">
                 <label for="state">Categoría</label>
-                <select class="custom-select power-select d-block w-100" id="category" name='category'>
+                <select class="custom-select power-select d-block w-100" id="category" name='category' tabindex="4">
                     <option value="">Todo</option>
                 </select>
             </div>
 
-            <div class="col-md-4 mb-1">
+            <div class="col-md-4 mb-4">
                 <label for="state">Origen</label>
-                <select class="custom-select power-select d-block w-100" id="source" name='source'>
+                <select class="custom-select power-select d-block w-100" id="source" names='ource' tabindex="5">
                     <option value="">Todo</option>
                 </select>
-            </div>
-
-            <div class="col-md-12 mb-4">
-                <label for="state">Documento</label>
-                <select class="custom-select power-select d-block w-100" id="document" name='document'>
-                    <option value="">Todo</option>
-                </select>
-            </div>
-
-            <div class="col-md-2 mb-1">
-                <button class="btn btn-secondary btn-lg btn-block" type="reset" >Reiniciar</button>
             </div>
 
             <div class="col-md-10 mb-1">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar</button>
+                <button class="btn btn-primary btn-lg btn-block" tabindex="6" type="submit">Continuar</button>
             </div>
+
+            <div class="col-md-2 mb-1">
+                <button class="btn btn-secondary btn-lg btn-block" tabindex="7" type="reset">Reiniciar</button>
+            </div>
+
         </div>
     </form>
     <hr class="mb-4">

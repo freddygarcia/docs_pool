@@ -111,6 +111,9 @@ class Mandate(models.Model):
         if filters.get('source'):
             query = query.filter(document__source_id=filters.get('source'))
 
+        if filters.get('keyword'):
+            query = query.filter(content__icontains=filters.get('keyword'))
+
         return query
 
     def __str__(self):

@@ -17,7 +17,6 @@ def home(request):
 
     if request.method == 'POST':
         filters = request.POST
-        form = SearchForm(filters)
         mandates_list = Mandate.find(filters)
         paginator = Paginator(mandates_list, settings.PAGE_LIMIT)
 
