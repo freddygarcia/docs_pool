@@ -3,141 +3,39 @@
 
 
 {% block styles %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
-<style type="text/css">
-	select {
-		width: 200px;
-	}
-
-	.select2-container .select2-selection--single {
-		height: 38px !important;
-		border: 1px solid #ced4da;
-	}
-
-	.select2-container--default .select2-selection--single .select2-selection__rendered {
-		color: #737373;
-		padding-top: 3px;
-	}
-
-	.bg-image {
-		background-image: url(https://images.pexels.com/photos/373076/pexels-photo-373076.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=550&w=1060);
-		background-position: center top;
-		background-repeat: no-repeat;
-		background-size: cover;
-		/*background-image: url({% static 'background.jpg' %});*/
-	}
-
-
-	.list-group-item-light.list-group-item-action:hover {
-		color: white;
-		background-color: #0069d9;
-	}
-</style>
+	<link rel="stylesheet" href="{% static 'libs/select2/select2.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'custom/css/custom.css' %}" />
 {% endblock styles %}
 
 
-
-
 {% block body %}
+	<div class='row'>
 
-<div class='row'>
+		<div class="col-sm-8 offset-md-1 ml- mt-2 ">
 
-	<div class="col-sm-8 offset-md-1 ml- mt-2 ">
+			<div class="py-5 text-center bg-image">
+				<a href=""> <img class="d-block mx-auto mb-4" src="{% static "document_circle.png" %}" alt="" width="92"
+						height="92"> </a>
+				<h2>Repositorio de Documentos</h2>
+				<p class="lead">Esto va a buscar muchos documentos</p>
+			</div>
 
-		<div class="py-5 text-center bg-image">
-			<a href=""> <img class="d-block mx-auto mb-4" src="{% static "document_circle.png" %}" alt="" width="92" height="92"> </a>
-			<h2>Repositorio de Documentos</h2>
-			<p class="lead">Esto va a buscar muchos documentos</p>
+
+			<div>
+				{% include 'search_form.html' %}
+				{% include 'list_mandate.html' %}
+			</div>
 		</div>
 
-
-		<div>
-			{% include 'search_form.html' %}
-			{% include 'list_mandate.html' %}
+		<div class="col-sm-3 pt-5">
+			{% include 'noticrawler_list_group.html' %}
 		</div>
 	</div>
-
-	<div class="col-sm-3 pt-5">
-		{% include 'noticrawler_list_group.html' %}
-	</div>
-</div>
-
-
 {% endblock body %}
 
 
-
-
-
-
 {% block scripts %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
-<script type="text/javascript">
-
-	function populate_filter(filter_name, display_name) {
-
-		var values = {{ f_filters | safe }};
-	display_name = display_name || 'name';
-
-
-	$.get('/api/' + filter_name).then(function (res, header) {
-		res.forEach(function (item, i) {
-
-			var selected = '';
-
-			if (values[filter_name] == item.id) selected = 'selected';
-
-			$('#' + filter_name).append('<option ' + selected + ' value="' + item.id + '">' + item[display_name] + '</option>')
-		});
-	});
-		}
-
-	function filterByArea() {
-		$('.area_filter').click(function () {
-			var area_id = $(this).data('area');
-			$('form #area').val(area_id);
-			$('form').submit()
-		})
-	}
-
-	function enable_select2() {
-		$('.power-select').select2();
-	}
-
-	function onReady() {
-		populate_filter('area')
-		populate_filter('category')
-		populate_filter('source')
-		populate_filter('document', 'title')
-
-		enable_select2();
-	}
-
-	function paginate() {
-
-		$('.page-link').click(function (ev) {
-			var page = $(this).data('page');
-			$('#page').val(page)
-			$('form').submit()
-		})
-	}
-
-	function resetForm() {
-		$('form button[type="reset"]').click(function (ev) {
-			window.location = '/'
-		})
-	}
-
-	function enableTooltip() {
-		$('.badge.badge-secondary').tooltip()
-	}
-
-	$(document).ready(onReady);
-	$(document).ready(paginate);
-	$(document).ready(filterByArea);
-	$(document).ready(enableTooltip);
-	$(document).ready(resetForm);
-</script>
+	<script src="{% static 'libs/select2/select2.min.js' %}"></script>
+	<script type="text/javascript">values = {{ f_filters | safe }};</script>
+	<script src="{% static 'js/index.js' %}"></script>
 {% endblock scripts %}

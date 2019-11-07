@@ -1,0 +1,26 @@
+select {
+    width: 200px;
+}
+
+.select2-container .select2-selection--single {
+    height: 38px !important;
+    border: 1px solid #ced4da;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #737373;
+    padding-top: 3px;
+}
+
+.bg-image {
+    background-image: url(https://images.pexels.com/photos/373076/pexels-photo-373076.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=550&w=1060);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background-image: url({% static 'background.jpg' %});*/
+}
+
+.list-group-item-light.list-group-item-action:hover {
+    color: white;
+    background-color: #0069d9;
+}
