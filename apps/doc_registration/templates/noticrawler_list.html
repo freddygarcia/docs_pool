@@ -1,0 +1,60 @@
+<!-- PRODUCT LIST -->
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Noticias</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <ul class="products-list product-list-in-box">
+            <li class="item" v-for='post in news'>
+                <div class="product-img">
+                    <img src="https://adminlte.io/themes/AdminLTE/dist/img/default-50x50.gif" alt="Product Image">
+                </div>
+                <div class="product-info">
+                    <a href="javascript:void(0)" class="product-title">
+                        ${post.title}
+                        <span class="label pull-right">${post.creation_date | moment}</span>
+                    </a>
+                    <span class="product-description">
+                        ${post.body}
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="box-footer text-center">
+        <a href="javascript:void(0)" class="uppercase">View All Products</a>
+    </div> -->
+</div>
+
+
+
+<!-- 
+                <div class="list-group-flush mb-5 ">
+
+    <a href="#" class="list-group-item text-center borderless disabled">
+        <span class="font-weight-light text-uppercase ">Esta semana</span>
+    </a>
+    {% for post in this_week_posts %}
+    <a href="{{post.url}}" class="list-group-item list-group-item-action"  target="_blank">
+        <span class="font-weight-light">({{post.readable_creation_date}})</span>
+        {{post.title}}
+    </a>
+    {% endfor %}
+</div>
+ 
+
+<div class="list-group-flush  mt-5">
+    <a href="#" class="list-group-item text-center borderless disabled">
+        <span class="font-weight-light text-uppercase">Más antiguo</span>
+    </a>
+    {% for post in older_posts %}
+    <a href="{{post.url}}" class="list-group-item list-group-item-action" target="_blank">
+        <span class="font-weight-light">({{post.readable_creation_date}})</span>
+        {{post.title}}
+    </a>
+    {% endfor %}
+</div>
+
+
+             -->
