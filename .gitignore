@@ -1,6 +1,8 @@
 *.pyc
-
-
 *.csv
 db.*
+
 env/
+node_modules/
+AdminLTE-3.0.1/
+css 3.0.1/
