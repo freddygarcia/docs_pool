@@ -49,7 +49,7 @@ MY_APPS = [
     'apps.noticrawler'
 ]
 
-INSTALLED_APPS = MY_APPS + DEFAULT_APPS +  THIRD_PARTY_APPS
+INSTALLED_APPS = MY_APPS + DEFAULT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,7 +66,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'apps', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,15 +85,15 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# 
+#
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'doc_pool_resevas',
-        'USER': 'fgabreu',
-        'PASSWORD': 'toor',
-        'HOST': 's460-aud04',
+        'USER': 'root',
+        'PASSWORD' : 'toor',
+        'HOST': 'localhost',
         'PORT': '3306',
     },
     'postgres': {
@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': 'noti_crawler',
         'USER': 'postgres',
         'PASSWORD': 'PgAdmin@DAC2019',
-        'HOST': 's460-aud04',
+        'HOST': 'localhost',
     },
 }
 
@@ -144,6 +144,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'apps', 'static'),
+]
 
 # elements to show in the home page
 PAGE_LIMIT = 10

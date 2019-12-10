@@ -18,11 +18,9 @@ from django.views.generic.base import RedirectView
 from django.urls import path, include
 
 from . import views
-from .api import routes
+from .api import routes as api_routes
 
 urlpatterns = [
-    path('api/', include(routes.router.urls)),
-	path('', views.index, name='index'),
+    path('api/', include(api_routes.router.urls)),
 	path('home', views.home, name='home'),
-    path('mandate/<int:mandate_id>', views.mandate, name='mandate')
 ]
