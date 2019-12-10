@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "env\\Scripts\\python.exe",
+    "files.exclude": {
+        "**/env": true,
+        "**/node_modules": false,
+        "**/__pycache__": true,
+        "**/libs": true,
+        "**/AdminLTE-3.0.1": true,
+    }
+}
