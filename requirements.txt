@@ -1,5 +1,5 @@
 Django==2.2.5
 django-select2==7.1.2
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 mysqlclient==1.4.6
 psycopg2==2.8.4
